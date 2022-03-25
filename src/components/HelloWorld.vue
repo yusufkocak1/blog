@@ -17,7 +17,7 @@
 
           <div class="button-group">
             <button id="btn">
-              <p id="btnText">Submit</p>
+              <p id="btnText">Send</p>
               <div class="check-box">
                 <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                   <path d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="transparent"/>
@@ -55,22 +55,30 @@ export default {
     submitForm() {
       const btn = document.querySelector("#btn");
       const btnText = document.querySelector("#btnText");
+      if (btnText.innerText === 'X') {
+        btnText.innerHTML = "Send";
+        btnText.fontSize = "24px";
+        btn.style.backgroundColor = "#2f2f2f"
+      } else {
 
-      btnText.innerHTML = "Thanks";
-      btn.classList.add("active");
-      btn.disabled = true;
-      let requestMessage = {
-        "fromID": 1,
-        "toID": 2,
-        "messageText": this.form.name + ' >>> ' + this.form.message
-      };
-      axios.post('http://localhost:8080/sendMessage', requestMessage)
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((error) => {
-            console.log(error)
-          });
+        let requestMessage = {
+          "fromID": 1,
+          "toID": 2,
+          "messageText": this.form.name + ' >>> ' + this.form.message
+        };
+        axios.post('http://localhost:8080/sendMessage', requestMessage)
+            .then((res) => {
+              console.log(res)
+              btnText.innerHTML = "Thanks";
+              btn.classList.add("active");
+              btn.disabled = true;
+            })
+            .catch((error) => {
+              btnText.innerHTML = "<b>X<b/>";
+              btn.style.backgroundColor = "#D32F2F"
+              console.log(error)
+            });
+      }
     }
 
   }
@@ -181,7 +189,7 @@ svg path {
 }
 
 .active {
-  background: #ff2b75;
+  background: #4CAF50;
   transition: 1s;
 }
 
