@@ -11,8 +11,6 @@
                     placeholder="write your letter here..."
                     rows="3"></textarea>
         </div>
-
-
         <div class="form-group">
 
           <div class="button-group">
@@ -66,7 +64,7 @@ export default {
           "toID": 2,
           "messageText": this.form.name + ' >>> ' + this.form.message
         };
-        axios.post('http://localhost:8080/sendMessage', requestMessage)
+        axios.post('https://yusufkocak-dev-server.herokuapp.com/sendMessage', requestMessage)
             .then((res) => {
               console.log(res)
               btnText.innerHTML = "Thanks";
