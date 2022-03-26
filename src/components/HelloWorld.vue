@@ -104,6 +104,7 @@ a {
   color: #fff;
 }
 .container{
+  min-width:400px;
   height: 90%;
   padding-top: 3%;
   background-color: #3f51b5;
@@ -134,7 +135,8 @@ a {
 
 }
 .contact{
-  width:400px;
+  width: 50%;
+  min-width:400px;
 }
 button{
     width: 270px;
