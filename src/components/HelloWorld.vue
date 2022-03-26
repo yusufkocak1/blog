@@ -134,8 +134,7 @@ a {
 
 }
 .contact{
-  width: 50vh;
-  min-width:400px;
+  width:400px;
 }
 button{
     width: 270px;
